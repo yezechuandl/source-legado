@@ -1,5 +1,4 @@
-[
-  {
+{
     "bookSourceComment": "//2025.1.5 ◎夜泽川◎",
     "bookSourceGroup": "同人",
     "bookSourceName": "🦔刺猬猫备份",
@@ -47,5 +46,4 @@
     },
     "searchUrl": "/search?q={{key}}&page={{page}}",
     "weight": 0
-  }
-]
+}
