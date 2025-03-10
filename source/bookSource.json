@@ -1,0 +1,52 @@
+[
+  {
+    "bookSourceComment": "//2025.1.5 ◎夜泽川◎  目录规则 by.楠枫",
+    "bookSourceGroup": "同人",
+    "bookSourceName": "🦔刺猬猫备份",
+    "bookSourceType": 0,
+    "bookSourceUrl": "https://backup.nhimmeo.cf/",
+    "customOrder": 92,
+    "enabled": true,
+    "enabledCookieJar": true,
+    "enabledExplore": true,
+    "exploreUrl": "[{\"title\":\"全部\",\"url\":\"/cate?q=0&page={{page}}\",\"style\":{\"layout_flexGrow\":1,\"layout_flexBasisPercent\":1}},{\"title\":\"玄幻\",\"url\":\"/cate?q=8&page={{page}}\",\"style\":{\"layout_flexGrow\":1,\"layout_flexBasisPercent\":0.25}},{\"title\":\"都市\",\"url\":\"/cate?q=27&page={{page}}\",\"style\":{\"layout_flexGrow\":1,\"layout_flexBasisPercent\":0.25}},{\"title\":\"心理\",\"url\":\"/cate?q=1&page={{page}}\",\"style\":{\"layout_flexGrow\":1,\"layout_flexBasisPercent\":0.25}},{\"title\":\"历史军事\",\"url\":\"/cate?q=30&page={{page}}\",\"style\":{\"layout_flexGrow\":1,\"layout_flexBasisPercent\":0.25}},{\"title\":\"科幻\",\"url\":\"/cate?q=6&page={{page}}\",\"style\":{\"layout_flexGrow\":1,\"layout_flexBasisPercent\":0.25}},{\"title\":\"运动\",\"url\":\"/cate?q=3&page={{page}}\",\"style\":{\"layout_flexGrow\":1,\"layout_flexBasisPercent\":0.25}},{\"title\":\"武侠\",\"url\":\"/cate?q=5&page={{page}}\",\"style\":{\"layout_flexGrow\":1,\"layout_flexBasisPercent\":0.25}},{\"title\":\"免费\",\"url\":\"/cate?q=24&page={{page}}\",\"style\":{\"layout_flexGrow\":1,\"layout_flexBasisPercent\":0.25}},{\"title\":\"女生\",\"url\":\"/cate?q=11&page={{page}}\",\"style\":{\"layout_flexGrow\":1,\"layout_flexBasisPercent\":0.25}}]",
+    "header": "@js:\nJSON.stringify({\n\t\"upgrade-insecure-requests\":\"1\",\n\t\"accept\":\"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8\",\n\t\"accept-language\":\"zh-CN,en-US;q=0.9\",\n\t\"Referer\": source.getKey(),\n\t\"User-Agent\":\"Mozilla/5.0 (Linux; Android 7.0; arm_64; SM-G920F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 YaBrowser/20.7.0.101.00 SA/1 Mobile Safari/537.36\"\n});",
+    "lastUpdateTime": 1741633827612,
+    "respondTime": 180000,
+    "ruleBookInfo": {
+      "author": "#book_author@text",
+      "coverUrl": "#pic_cover@data-src",
+      "intro": "&nbsp;&nbsp;♨️月票：{{@@#total_yp@text}}\n📍推荐：{{@@#total_recommend@text}}\n🏷️标签tag：{{@@#book_tags@a@text##\\n##,}}\n🕰️最后更新：{{@@#book_uptime@text}}\n📜简介：{{@@#book_description@html}}",
+      "kind": "[target=_blank]@text",
+      "lastChapter": "#newest_chapter@text",
+      "name": "h1@text",
+      "tocUrl": "{{baseUrl}}/catalog/",
+      "wordCount": "#book_total_word_count@text"
+    },
+    "ruleContent": {
+      "content": "@js: try { \n\t html = src.match(/txt_content_encrypted\\s*=\\s*\"([^\"]+)\"/)[1]\neval(\"'\" + html + \"'\");\n  } catch(error) {\n  java.log(error);\njava.toast(chapter.title + \"未解锁\");\ntxt = \"章节未解锁\";\n}",
+      "title": "#chapter_title@text"
+    },
+    "ruleExplore": {
+      "bookList": "",
+      "bookUrl": "",
+      "coverUrl": "",
+      "name": ""
+    },
+    "ruleSearch": {
+      "author": "",
+      "bookList": "#search_result > div",
+      "bookUrl": "a@href",
+      "coverUrl": "img@data-src##(?<=jpg).*",
+      "name": "text"
+    },
+    "ruleToc": {
+      "chapterList": "@css:\n.accordion-button, .chapter_name\n\n@js:\nlist=[]\n$=result\nfor(i in $){\nif(String($[i]).match(/class=\"accordion-button/)){\n\tt=String($[i].text()).replace(new RegExp(book.name,''),'').replace(/.*\\|\\s/g,'');\n\t\tlist.push({\n\t\t\t\ttext: \"🏮〖\"+t+\" 〗🏮\",\n\t\t\t\tvolume: true\n\t\t\t})\n\t}\nelse{\n\t\t$[i].select(\"a\").forEach(a=>{\n\t\t\t\tlist.push({\n\t\t\t\t\t\t\"title\": a.text(),\n\t\t\t\t\t\t\"href\": a.attr(\"href\")\n\t\t\t\t\t})\n\t\t\t})\n\t}\n}\nlist",
+      "chapterName": "title",
+      "chapterUrl": "href",
+      "isVolume": "volume"
+    },
+    "searchUrl": "/search?q={{key}}&page={{page}}",
+    "weight": 0
+  }
+]
