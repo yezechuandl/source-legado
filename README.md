@@ -1,4 +1,5 @@
-# Legado 书源存储<sub>转载请保留源注释</sub>
+# Legado 书源存储
+## 转载请保留源注释
 [🚀立即加入群组🚀](https://t.me/+eLOWs94XsXxiY2Q1)
 # 阅读下载
 #### 建议下载最新测试(beta)版本
