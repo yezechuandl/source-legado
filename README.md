@@ -9,4 +9,9 @@
 >[Github直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/爱丽丝书屋.json)
 >
 >[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/爱丽丝书屋.json)
+>
+#### 网络书籍
+>[Github直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/杂七杂八.json)
+>
+>[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/杂七杂八.json)
 ### 如有问题请加入群组，或者[issue](https://github.com/yezechuandl/source-legado/issues)
