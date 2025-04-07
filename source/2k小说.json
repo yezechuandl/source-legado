@@ -1,0 +1,63 @@
+[
+  {
+    "bookSourceComment": "//2025.1.3 ◎夜泽川◎\n//同站一堆\n//2025.4.5 修复搜索，解密url ◎夜泽川◎",
+    "bookSourceGroup": "网络,自制",
+    "bookSourceName": "2k小说",
+    "bookSourceType": 0,
+    "bookSourceUrl": "https://www.kkxsz.com",
+    "customOrder": 54,
+    "enabled": true,
+    "enabledCookieJar": true,
+    "enabledExplore": true,
+    "exploreUrl": "@js: var result = []\nvar push = (title, url, size) => result.push({\n  title: title,\n  url: url,\n  style: {\n    layout_flexGrow: 1,\n    layout_flexBasisPercent: size\n  }\n})\npush(\"全部分类\",null,1);\nvar tg = java.ajax(source.key);\nvar tag = org.jsoup.Jsoup.parse(tg).select('a[href^=/list]');\ntag.forEach(fl => {\n  nam = fl.text()\n  ul = String(fl.attr('href')).replace(/\\/$/,\"-{{page}}/\");\npush(nam,ul,0.25);\n})\nJSON.stringify(result);",
+    "header": "{\"User-Agent\": \"Mozilla/5.0 (Linux; Android 9) Mobile Safari/537.36\"}",
+    "jsLib": "function openUrl(encryptedBase64, numBase64) {\n\t  const { java , source } = this\n    var javaImport = new JavaImporter(\n         Packages.java.util.Arrays\n    );\n    with(javaImport) {\n        var numBytes = java.base64DecodeToByteArray(numBase64);\n        var numStr = java.bytesToStr(numBytes, \"UTF-8\");\n        //生成密匙（与源UA动态关联）\n        var userAgent = String(source.header) ? JSON.parse(source.header)[\"User-Agent\"].toLowerCase() : \"mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/119.0.0.0 safari/537.36\";\n        var keyMd5 = java.md5Encode(userAgent + numStr);\n        var key = java.strToBytes(keyMd5, \"UTF-8\");\n        var encryptedData = java.base64DecodeToByteArray(encryptedBase64);\n        var iv = Arrays.copyOfRange(encryptedData, 0, 16);\n        var Data = Arrays.copyOfRange(encryptedData, 16, encryptedData.length);\n        var cipher = java.createSymmetricCrypto(\n            \"AES/CBC/PKCS5Padding\", \n            key, \n            iv\n        );\n        return cipher.decryptStr(Data);\n    }\n}",
+    "lastUpdateTime": 1744003339875,
+    "respondTime": 180000,
+    "ruleBookInfo": {
+      "author": "@get:{a}",
+      "coverUrl": "@get:{i}",
+      "init": "@put:{n:\"[property$=book_name]@content\",\na:\"[property$=author]@content\",\nt:\"[property~=category|status]@content\",\nl:\"[property$=latest_chapter_name]@content\",\ni:\"[property$=image]@content\",\no:\"[property$=description]@content\",\ng:\"[property$=update_time]@content\",\nz:\"class.li4.-1@text##字数：\",\nm:\"option@value||.dropDown@li@data-p\"\n}",
+      "intro": "@get:{o}",
+      "kind": "@get:{t}",
+      "lastChapter": "@get:{l}◎@get:{g}",
+      "name": "@get:{n}",
+      "tocUrl": "@get:{m}\n@js: var id = baseUrl.match(/book\\/(.*?)\\.html/)[1];\njava.put(\"id\",id);\nvar pages = result.split(\"\\n\");\njava.put(\"page\",pages.length);\nresult = baseUrl.match(/^(.*?\\/\\/.*?)\\//)[1] + \"/index.php?action=loadChapterPage\" + \",\" + JSON.stringify({\n  \"body\": `id=${id}&page=1`,\n  \"method\": \"POST\"\n});",
+      "wordCount": "@get:{z}"
+    },
+    "ruleContent": {
+      "content": "#content@html||.content@html",
+      "imageStyle": "",
+      "nextContentUrl": "[class~=pageDown|btnGray]@href",
+      "replaceRegex": "##.*{{source.key}}.*|\\n+.*章节错误,点此举报.*\\n+|\\(https?.*\\/book\\/.*\\)|.*首发域名.*"
+    },
+    "ruleExplore": {
+      "author": ".author@text",
+      "bookList": ".list2 > ul > li",
+      "bookUrl": "a.0@href",
+      "coverUrl": "",
+      "kind": "[class~=cate|date]@text##\\[|\\]",
+      "lastChapter": ".chapter@text",
+      "name": ".name a@text"
+    },
+    "ruleSearch": {
+      "author": "a[href~=author][0]@text",
+      "bookList": "<js>\nnum = src.match(/num = \\'([^']+?)\\'/)[1];\njava.put(\"num\",num);\nsrc;\n</js>\n.list > ul > li",
+      "bookUrl": "a.0@onclick\n@js: \nencryptedText = result.match(/\\'([^']+?)\\'/)[1];\nnum = java.get(\"num\");\nopenUrl(encryptedText,num);",
+      "coverUrl": "img@src",
+      "intro": ".intro@text",
+      "kind": ".info a[href~=list]@text",
+      "lastChapter": ".infoM2@a.-1@text",
+      "name": ".name@text"
+    },
+    "ruleToc": {
+      "chapterList": "$.data",
+      "chapterName": "$.chaptername",
+      "chapterUrl": "$.chapterurl",
+      "isPay": "",
+      "nextTocUrl": "@js: result = []\nid = java.get(\"id\");\npages = java.get(\"page\");\nfor (let i = 2 ; i <= pages ; i++) {\noption = baseUrl.match(/^(.*?\\/\\/.*?)\\//)[1] + \"/index.php?action=loadChapterPage\" + \",\" + JSON.stringify({\n  \"body\": `id=${id}&page=${i}`,\n  \"method\": \"POST\"\n});\nresult.push(option);\n}\nresult;"
+    },
+    "searchUrl": "@js: \nvar url = java.ajax(source.key).match(/window\\.location\\.href=\\'([^']+)/)[1];\njava.log(url);\ncookie.removeCookie(url);\nvar ckk = java.get(url,{});\nvar ck = cookie.getCookie(url);\njava.log(ck);\nvar result = \"https://www.rrssk.com\" + \"/keywords-{{key}}-{{page}}.html\" + \",\" + JSON.stringify({\n\t\"headers\":{\"Cookie\":ck}\n});\nresult;",
+    "weight": 0
+  }
+]
