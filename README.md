@@ -10,6 +10,7 @@
 >[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/爱丽丝书屋.json)
 >
 #### 网络书籍
+合集
 >[Github直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/杂七杂八.json)
 >
 >[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/杂七杂八.json)
