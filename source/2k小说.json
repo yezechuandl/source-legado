@@ -5,19 +5,20 @@
     "bookSourceName": "2k小说",
     "bookSourceType": 0,
     "bookSourceUrl": "https://www.kkxsz.com",
-    "customOrder": 54,
+    "customOrder": 71,
     "enabled": true,
     "enabledCookieJar": true,
     "enabledExplore": true,
-    "exploreUrl": "@js: var result = []\nvar push = (title, url, size) => result.push({\n  title: title,\n  url: url,\n  style: {\n    layout_flexGrow: 1,\n    layout_flexBasisPercent: size\n  }\n})\npush(\"全部分类\",null,1);\nvar tg = java.ajax(source.key);\nvar tag = org.jsoup.Jsoup.parse(tg).select('a[href^=/list]');\ntag.forEach(fl => {\n  nam = fl.text()\n  ul = String(fl.attr('href')).replace(/\\/$/,\"-{{page}}/\");\npush(nam,ul,0.25);\n})\nJSON.stringify(result);",
-    "header": "{\"User-Agent\": \"Mozilla/5.0 (Linux; Android 9) Mobile Safari/537.36\"}",
-    "jsLib": "function openUrl(encryptedBase64, numBase64) {\n\t  const { java , source } = this\n    var javaImport = new JavaImporter(\n         Packages.java.util.Arrays\n    );\n    with(javaImport) {\n        var numBytes = java.base64DecodeToByteArray(numBase64);\n        var numStr = java.bytesToStr(numBytes, \"UTF-8\");\n        //生成密匙（与源UA动态关联）\n        var userAgent = String(source.header) ? JSON.parse(source.header)[\"User-Agent\"].toLowerCase() : \"mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/119.0.0.0 safari/537.36\";\n        var keyMd5 = java.md5Encode(userAgent + numStr);\n        var key = java.strToBytes(keyMd5, \"UTF-8\");\n        var encryptedData = java.base64DecodeToByteArray(encryptedBase64);\n        var iv = Arrays.copyOfRange(encryptedData, 0, 16);\n        var Data = Arrays.copyOfRange(encryptedData, 16, encryptedData.length);\n        var cipher = java.createSymmetricCrypto(\n            \"AES/CBC/PKCS5Padding\", \n            key, \n            iv\n        );\n        return cipher.decryptStr(Data);\n    }\n}",
-    "lastUpdateTime": 1744003339875,
+    "exploreUrl": "@js: var result = []\nvar push = (title, url, size) => result.push({\n  title: title,\n  url: url,\n  style: {\n    layout_flexGrow: 1,\n    layout_flexBasisPercent: size\n  }\n})\npush(\"全部分类\",null,1);\nvar tg = java.ajax(source.key);\nvar tag = org.jsoup.Jsoup.parse(tg).select('a[href^=/list]');\ntag.forEach(fl => {\n  nam = fl.text()\n  ul = String(fl.attr('href')).replace(/\\/$/,\"-{{page}}/\");\npush(nam,ul,0.25);\n});\nJSON.stringify(result);",
+    "header": "{\"User-Agent\":\"Mozilla/5.0 (Linux; Android 9) Mobile Safari/537.36\"}",
+    "jsLib": "function openUrl(encryptedBase64, num) {\n\t  const { java , source } = this\n        var numStr = java.base64Decode(num);\n        var userAgent = String(source.header) ? JSON.parse(source.header)[\"User-Agent\"].toLowerCase() : \"mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/119.0.0.0 safari/537.36\";\n        var keyMd5 = java.md5Encode(userAgent + numStr);\n        var key = java.strToBytes(keyMd5);\n        var encryptedData = java.base64DecodeToByteArray(encryptedBase64);\n         var iv = encryptedData.slice(0,16);\n\t       var Data = encryptedData.slice(16);\n         var cipher = java.createSymmetricCrypto(\n            \"AES/CBC/PKCS5Padding\", \n            key, \n            iv\n        );\n        return cipher.decryptStr(Data);\n}\nfunction generateBody(cookie, num) {\n\t   const {java} = this\n    var cpk = \"ge_ua_p\";\n    var nonce = Number(num);\n    var sum = 0;\n\n    if (cookie) {\n        var cookieArray = cookie.split(\";\");\n        for (var i = 0; i < cookieArray.length; i++) {\n            var cookieItem = cookieArray[i].trim();\n            var keyValue = cookieItem.split(\"=\");\n            if (keyValue.length === 2 && keyValue[0] === cpk) {\n                var cookieValue = keyValue[1];\n                java.log(\"cookieValue：\"+cookieValue)\n                for (var j = 0; j < cookieValue.length; j++) {\n                    var char = cookieValue[j];\n                    if (/^[a-zA-Z0-9]$/.test(char)) {\n                        sum += cookieValue.charCodeAt(j) * (nonce + j);\n                    }\n                }\n                break;\n            }\n        }\n    }\n\n    return \"sum=\" + sum + \"&nonce=\" + nonce;\n}",
+    "lastUpdateTime": 1748271641540,
+    "loginUrl": "https://www.kkxsz.com",
     "respondTime": 180000,
     "ruleBookInfo": {
       "author": "@get:{a}",
       "coverUrl": "@get:{i}",
-      "init": "@put:{n:\"[property$=book_name]@content\",\na:\"[property$=author]@content\",\nt:\"[property~=category|status]@content\",\nl:\"[property$=latest_chapter_name]@content\",\ni:\"[property$=image]@content\",\no:\"[property$=description]@content\",\ng:\"[property$=update_time]@content\",\nz:\"class.li4.-1@text##字数：\",\nm:\"option@value||.dropDown@li@data-p\"\n}",
+      "init": "@put:{\"n\":\"[property$=book_name]@content\",\n\"a\":\"[property$=author]@content\",\n\"t\":\"[property~=category|status]@content\",\n\"l\":\"[property$=latest_chapter_name]@content\",\n\"i\":\"[property$=image]@content\",\n\"o\":\"[property$=description]@content\",\n\"g\":\"[property$=update_time]@content\",\n\"z\":\"class.li4.-1@text##字数：\",\n\"m\":\"option@value||.dropDown@li@data-p\"\n}",
       "intro": "@get:{o}",
       "kind": "@get:{t}",
       "lastChapter": "@get:{l}◎@get:{g}",
@@ -27,7 +28,6 @@
     },
     "ruleContent": {
       "content": "#content@html||.content@html",
-      "imageStyle": "",
       "nextContentUrl": "[class~=pageDown|btnGray]@href",
       "replaceRegex": "##.*{{source.key}}.*|\\n+.*章节错误,点此举报.*\\n+|\\(https?.*\\/book\\/.*\\)|.*首发域名.*"
     },
@@ -35,15 +35,15 @@
       "author": ".author@text",
       "bookList": ".list2 > ul > li",
       "bookUrl": "a.0@href",
-      "coverUrl": "",
+      "coverUrl": "img@src",
       "kind": "[class~=cate|date]@text##\\[|\\]",
       "lastChapter": ".chapter@text",
       "name": ".name a@text"
     },
     "ruleSearch": {
-      "author": "a[href~=author][0]@text",
+      "author": "a[href～=author][0]@text",
       "bookList": "<js>\nnum = src.match(/num = \\'([^']+?)\\'/)[1];\njava.put(\"num\",num);\nsrc;\n</js>\n.list > ul > li",
-      "bookUrl": "a.0@onclick\n@js: \nencryptedText = result.match(/\\'([^']+?)\\'/)[1];\nnum = java.get(\"num\");\nopenUrl(encryptedText,num);",
+      "bookUrl": "a@onclick\n@js: \nencryptedText = result.match(/\\'([^']+?)\\'/)[1];\nnum = java.get(\"num\");\nopenUrl(encryptedText,num);",
       "coverUrl": "img@src",
       "intro": ".intro@text",
       "kind": ".info a[href~=list]@text",
@@ -54,10 +54,9 @@
       "chapterList": "$.data",
       "chapterName": "$.chaptername",
       "chapterUrl": "$.chapterurl",
-      "isPay": "",
-      "nextTocUrl": "@js: result = []\nid = java.get(\"id\");\npages = java.get(\"page\");\nfor (let i = 2 ; i <= pages ; i++) {\noption = baseUrl.match(/^(.*?\\/\\/.*?)\\//)[1] + \"/index.php?action=loadChapterPage\" + \",\" + JSON.stringify({\n  \"body\": `id=${id}&page=${i}`,\n  \"method\": \"POST\"\n});\nresult.push(option);\n}\nresult;"
+      "nextTocUrl": "@js: result = [];\nid = java.get(\"id\");\npages = java.get(\"page\");\nfor (let i = 2 ; i <= pages ; i++) {\noption = baseUrl.match(/^(.*?\\/\\/.*?)\\//)[1] + \"/index.php?action=loadChapterPage\" + \",\" + JSON.stringify({\n  \"body\": `id=${id}&page=${i}`,\n  \"method\": \"POST\"\n});\nresult.push(option);\n}\nresult;"
     },
-    "searchUrl": "@js: \nvar url = java.ajax(source.key).match(/window\\.location\\.href=\\'([^']+)/)[1];\njava.log(url);\ncookie.removeCookie(url);\nvar ckk = java.get(url,{});\nvar ck = cookie.getCookie(url);\njava.log(ck);\nvar result = \"https://www.rrssk.com\" + \"/keywords-{{key}}-{{page}}.html\" + \",\" + JSON.stringify({\n\t\"headers\":{\"Cookie\":ck}\n});\nresult;",
+    "searchUrl": "@js:\nvar url = java.ajax(source.key).match(/window\\.location\\.href='([^']+)/)[1];\njava.log(url);\ncookie.removeCookie(url);\nlet res = java.get(url,{});\nvar ck = /Checking your browser/.test(res.body()) ? java.webView(null, url, \"document.cookie\") : cookie.getCookie(url);\nvar result = \"https://www.rrssk.com\" + \"/keywords-{{key}}-{{page}}.html\" + \",\" + JSON.stringify({\n\t\"headers\":{\"Cookie\":ck}\n});\nresult;",
     "weight": 0
   }
 ]
