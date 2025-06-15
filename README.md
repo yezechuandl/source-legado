@@ -21,7 +21,7 @@ MangaDex
 >[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/MangaDex.json)
 >
 ## 轻小说
-汉化社区（韩轻机翻）
+汉化社区（韩轻机翻·需要登录）
 >[Guthub直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/汉化社区.json)
 >
 >[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/汉化社区.json)
