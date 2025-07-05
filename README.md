@@ -22,8 +22,13 @@ MangaDex
 >
 ## 轻小说
 汉化社区（韩轻机翻·需要登录）
->[Guthub直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/汉化社区.json)
+>[Guthub直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/轻小说/汉化社区.json)
 >
->[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/汉化社区.json)
+>[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/轻小说/汉化社区.json)
+>
+幻梦轻小说
+>[Guthub直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/轻小说/幻梦轻小说.json)
+>
+>[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/轻小说/幻梦轻小说.json)
 >
 ### 如有问题请提交[issue](https://github.com/yezechuandl/source-legado/issues)
