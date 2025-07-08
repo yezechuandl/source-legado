@@ -16,9 +16,14 @@
 >[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/杂七杂八.json)
 ## 漫画
 MangaDex
->[Guthub直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/MangaDex.json)
+>[Guthub直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/漫画/MangaDex.json)
 >
->[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/MangaDex.json)
+>[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/漫画/MangaDex.json)
+>
+Nice Cat漫画（App）
+>[Guthub直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/漫画/Nice Cat.json)
+>
+>[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/漫画/Nice Cat.json)
 >
 ## 轻小说
 汉化社区（韩轻机翻·需要登录）
