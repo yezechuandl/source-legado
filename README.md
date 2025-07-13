@@ -11,7 +11,7 @@
 >
 ## 网络书籍
 合集
->[Github直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/杂七杂八.json)
+>[Github直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/网络.json)
 >
 >[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/杂七杂八.json)
 ## 漫画
