@@ -30,7 +30,7 @@ body:
     attributes:
       value: |
         ### 💡 小提示
-        **日志请先到其他设置里打开**
+        **日志请先到其他设置里打开【记录日志】**
 
   - type: textarea
     id: log_description
