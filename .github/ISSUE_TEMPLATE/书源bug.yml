@@ -35,10 +35,10 @@ body:
   - type: textarea
     id: log_description
     attributes:
-      label: 日志描述
+      label: 错误日志
       description: 请粘贴相关的错误日志
       placeholder: |
-        请在此处粘贴日志内容，请提供展开后的详细日志内容
+        请在此处粘贴日志内容或日志截图，请提供展开后的详细日志内容
         
         如果日志内容过长，建议使用代码块格式：
         ```
