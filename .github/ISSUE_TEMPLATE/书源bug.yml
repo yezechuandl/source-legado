@@ -1,0 +1,49 @@
+name: BUG反馈
+description: 报告书源使用中的错误或问题
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: checkboxes
+    id: basic_check
+    attributes:
+      label: 错误预查
+      description: 请事先检查以下事项
+      options:
+        - label: 阅读版本是否为测试版
+          required: true
+        - label: 书源是否为最新版
+          required: true
+
+  - type: textarea
+    id: bug_description
+    attributes:
+      label: BUG内容描述
+      description: 请详细描述遇到的问题
+      placeholder: |
+        请描述：
+        1. xx书源
+        2. 出现的问题
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 💡 小提示
+        **日志请先到其他设置里打开**
+
+  - type: textarea
+    id: log_description
+    attributes:
+      label: 日志描述
+      description: 请粘贴相关的错误日志
+      placeholder: |
+        请在此处粘贴日志内容，请提供展开后的详细日志内容
+        
+        如果日志内容过长，建议使用代码块格式：
+        ```
+        日志内容
+        ```
+        或者贴截图
+    validations:
+      required: false
