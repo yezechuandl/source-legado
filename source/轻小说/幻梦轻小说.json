@@ -2,17 +2,17 @@
   {
     "bookSourceComment": "//2025.7.4 ◎夜泽川◎",
     "bookSourceGroup": "轻小说,自制",
-    "bookSourceName": "幻梦轻小说",
+    "bookSourceName": "✨幻梦轻小说",
     "bookSourceType": 0,
     "bookSourceUrl": "https://www.huanmengacg.com",
-    "customOrder": 1,
+    "customOrder": 688,
     "enabled": true,
     "enabledCookieJar": true,
     "enabledExplore": true,
-    "exploreUrl": "@js:\nvar result = [];\nvar push = (title, url, size) => result.push({\n        title,\n        url: title == \"排行\" ? url : `${url}/page/{{page}}`,\n        style: {\n            layout_flexGrow: 1,\n            layout_flexBasisPercent: size\n        }\n});\n\nconst tags = org.jsoup.Jsoup.parse(java.ajax(source.key)).select(\".aui-palace-one a\");\n\ntags.forEach(link => {\n    let url = link.attr('href');\n    let title = link.text();\n    push(title, url, 1);\n\n    if (title != \"排行\") {\n        let Sub = org.jsoup.Jsoup.parse(java.ajax(source.key + url)).select('.tab-hd a[class=\"\"]').toArray();\n        Sub.slice(1).forEach(subLink => {\n            push(subLink.text(), subLink.attr('href'), 0.25);\n        });\n    }\n});\n\nJSON.stringify(result);",
+    "exploreUrl": "@js:\nvar result = [];\nvar push = (title, url, size) => result.push({\n        title,\n        url: title == \"排行\" ? url : `${url}/page/{{page}}`,\n        style: {\n            layout_flexGrow: 1,\n            layout_flexBasisPercent: size\n        }\n});\n\nconst tags = org.jsoup.Jsoup.parse(java.ajax(source.key)).select(\".aui-palace-one a\");\n\ntags.forEach(link => {\n    let url = link.attr('href');\n    let title = link.text();\n    push(`༺ˇ»\\`ʚ  ${title}  ɞ´«ˇ༻`, url, 1);\n\n    if (title != \"排行\") {\n        let Sub = org.jsoup.Jsoup.parse(java.ajax(source.key + url)).select('.tab-hd a[class=\"\"]').toArray();\n        Sub.slice(1).forEach(subLink => {\n            push(subLink.text(), subLink.attr('href'), 0.25);\n        });\n    }\n});\n\nJSON.stringify(result);",
     "header": "{\"User-Agent\": \"Mozilla/5.0 (Linux; Android 9) Mobile Safari/537.36\"}",
-    "lastUpdateTime": 1751680053613,
-    "loginCheckJs": "if (/Just a moment.../.test(result.body())) {\n    let url = result.url();\n    cookie.removeCookie(url);\n    result = java.startBrowserAwait(url, \"验证\", false);\n}\nresult;",
+    "lastUpdateTime": 1754785617261,
+    "loginCheckJs": "if (/Just a moment/.test(result.body())) {\n    let url = result.url();\n    cookie.removeCookie(url);\n    result = java.startBrowserAwait(url, \"验证\", false);\n}\nresult;",
     "respondTime": 180000,
     "ruleBookInfo": {
       "author": "$.author",
@@ -38,7 +38,7 @@
       "name": "$.name"
     },
     "ruleToc": {
-      "chapterList": "#chapterlist a\n@js:\nvar chapterList = [];\nvar volumes = new Set();\n\nresult.toArray().forEach(list => {\n    let title = String(list.text());\n    let url = list.attr('href');\n    let volumeTitle = title.split(/\\s+/)[0];\n    //java.log(JSON.stringify(title.split(/\\s+/)))\n    let isVolumePattern = /第[一二三四五六七八九十百]+卷$/.test(volumeTitle);\n\n    if (isVolumePattern && !volumes.has(volumeTitle)) {\n        volumes.add(volumeTitle);\n        chapterList.push({\n            title: volumeTitle,\n            url: null,\n            isVolume: true\n        });\n    }\n\n    chapterList.push({\n        title: isVolumePattern ? title.replace(new RegExp(`${volumeTitle}\\\\s+`), \"\") : title,\n        url,\n        isVolume: false\n    });\n});\n\nchapterList;",
+      "chapterList": "#chapterlist a\n@js:\nvar chapterList = [];\nvar volumes = new Set();\n\nresult.toArray().forEach(list => {\n    let title = String(list.text());\n    let url = list.attr('href');\n    let volumeTitle = title.split(/\\s+/)[0];\n    \n    let isVolumePattern = /^(第[一二三四五六七八九十百]+卷|第\\d+(?:\\.\\d+)?卷)$/.test(volumeTitle);\n\n    if (isVolumePattern && !volumes.has(volumeTitle)) {\n        volumes.add(volumeTitle);\n        chapterList.push({\n            title: volumeTitle,\n            url: null,\n            isVolume: true\n        });\n    }\n\n    chapterList.push({\n        title: isVolumePattern ? title.replace(new RegExp(`${volumeTitle}\\\\s+`), \"\") : title,\n        url,\n        isVolume: false\n    });\n});\n\nchapterList;",
       "chapterName": "title",
       "chapterUrl": "url",
       "isVolume": "isVolume"
