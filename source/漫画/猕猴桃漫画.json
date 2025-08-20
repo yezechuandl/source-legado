@@ -1,0 +1,61 @@
+[
+  {
+    "bookSourceComment": "//2025.5.20 ◎夜泽川◎\n//2025.8.3 修复 ◎夜泽川◎",
+    "bookSourceGroup": "自制,漫画",
+    "bookSourceName": "🥝猕猴桃漫画",
+    "bookSourceType": 2,
+    "bookSourceUrl": "https://www.mwwz.cc",
+    "customOrder": 130,
+    "enabled": true,
+    "enabledCookieJar": true,
+    "enabledExplore": true,
+    "exploreUrl": "@js:\nvar result = [];\nvar push = (title, tag, p, size) => result.push({\n    title: title,\n    url: `{{Url()}}/api${p}` + \",\" + JSON.stringify({\n  \"body\": `{\\\"page\\\":{\\\"page\\\":{{page}},\\\"pageSize\\\":10},\\\"category\\\":\\\"comic\\\",\\\"sort\\\":0,\\\"comic\\\":{\\\"status\\\":-1,\\\"day\\\":0,\\\"tag\\\":\\\"${tag}\\\"},\\\"video\\\":{\\\"year\\\":0,\\\"typeId\\\":0,\\\"typeId1\\\":0,\\\"area\\\":\\\"\\\",\\\"lang\\\":\\\"\\\",\\\"status\\\":-1,\\\"day\\\":0},\\\"novel\\\":{\\\"status\\\":-1,\\\"day\\\":0,\\\"sortId\\\":0}}`,\n  \"headers\": source.getLoginHeader() || \"\",\n  \"method\": \"POST\"\n}),\n    style: {\n        layout_flexGrow: 1,\n        layout_flexBasisPercent: size\n    }\n});\nvar tags = org.jsoup.Jsoup.parse(java.ajax(Url() + '/cate')).select('.tag-container').toArray().at(-1).select('a');\nfor (let i in tags) {\n\tlet size = i == 0 ? 1 : 0.25;\n\tpush(tags[i].text(), tags[i].attr('data-value'), tags[i].attr('href'), size);\n}\nJSON.stringify(result);",
+    "header": "{\"User-Agent\":\"Mozilla/5.0 (Linux; Android 9) Mobile Safari/537.36\",\"Referer\":\"https://www.mhtmh.com\"}",
+    "jsLib": "function Url() {\n    const { source, java } = this;\n    var original = {\n        \"sourceurl\": \"https://www.mhtmh.com\",\n        \"Urls\": []\n    };\n    if (source.getVariable() == '') {\n        source.setVariable(JSON.stringify(original, null, \"\\t\"));\n        java.toast('已初始化');\n    }\n    return JSON.parse(source.getVariable()).sourceurl;\n}\n\n// 中文\nfunction randomChinese() {\n    const min = 0x4e00;\n    const max = 0x9fff;\n    const code = Math.floor(Math.random() * (max - min + 1)) + min;\n    return String.fromCharCode(code);\n}\n\n// 英文\nfunction randomEnglish() {\n    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\n    return chars[Math.floor(Math.random() * chars.length)];\n}\n\n// 随机用户名（混合）\nfunction generateRandomUsername() {\n    const minLen = 3;\n    const maxLen = 50;\n    const len = Math.floor(Math.random() * (maxLen - minLen + 1)) + minLen;\n\n    let username = '';\n    for (let i = 0; i < len; i++) {\n        if (Math.random() > 0.5) {\n            username += randomChinese();\n        } else {\n            username += randomEnglish();\n        }\n    }\n\n    return username;\n}\n\n// 随机邮箱\nfunction generateRandomEmail() {\n    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\n    const userLen = Math.floor(Math.random() * 18) + 3;\n    let username = '';\n    for (let i = 0; i < userLen; i++) {\n        username += chars[Math.floor(Math.random() * chars.length)];\n    }\n\n    const domains = ['gmail.com', '163.com', 'qq.com', 'hotmail.com', 'yahoo.com',\n        'sina.com', '126.com', 'outlook.com', 'test.com', 'example.com', 'sh.sh'\n    ];\n    const domain = domains[Math.floor(Math.random() * domains.length)];\n\n    return `${username}@${domain}`;\n}\n\n// 随机密码\nfunction generateRandomPassword() {\n    const minLen = 6;\n    const maxLen = 20;\n    const len = Math.floor(Math.random() * (maxLen - minLen + 1)) + minLen;\n\n    let password = '';\n    for (let i = 0; i < len; i++) {\n        password += Math.floor(Math.random() * 10);\n    }\n\n    return password;\n}\n\nfunction generateRandomInfo() {\n    return {\n        username: generateRandomUsername(),\n        email: generateRandomEmail(),\n        password: generateRandomPassword()\n    };\n}",
+    "lastUpdateTime": 1755702907568,
+    "loginUi": "[\n    {\n        \"name\": \"获取站源\",\n        \"type\": \"button\",\n        \"action\": \"getUrl()\",\n        \"style\": {\n            \"layout_flexGrow\": 1,\n            \"layout_flexBasisPercent\": 1\n        }\n    },\n    {\n        \"name\": \"①\",\n        \"type\": \"button\",\n        \"action\": \"setUrl(0)\",\n        \"style\": {\n            \"layout_flexGrow\": 1,\n            \"layout_flexBasisPercent\": 0.2\n        }\n    },\n    {\n        \"name\": \"②\",\n        \"type\": \"button\",\n        \"action\": \"setUrl(1)\",\n        \"style\": {\n            \"layout_flexGrow\": 1,\n            \"layout_flexBasisPercent\": 0.2\n        }\n    },\n    {\n        \"name\": \"③\",\n        \"type\": \"button\",\n        \"action\": \"setUrl(2)\",\n        \"style\": {\n            \"layout_flexGrow\": 1,\n            \"layout_flexBasisPercent\": 0.2\n        }\n    },\n    {\n        \"name\": \"④\",\n        \"type\": \"button\",\n        \"action\": \"setUrl(3)\",\n        \"style\": {\n            \"layout_flexGrow\": 1,\n            \"layout_flexBasisPercent\": 0.2\n        }\n    },\n    {\n        \"name\": \"用户名\",\n        \"type\": \"text\"\n    },\n    {\n        \"name\": \"密码\",\n        \"type\": \"password\"\n    },\n    {\n        \"name\": \"随机注册\",\n        \"type\": \"button\",\n        \"action\": \"register()\",\n        \"style\": {\n            \"layout_flexGrow\": 1,\n            \"layout_flexBasisPercent\": 0.2\n        }\n    },\n    {\n        \"name\": \"登录\",\n        \"type\": \"button\",\n        \"action\": \"Login()\",\n        \"style\": {\n            \"layout_flexGrow\": 1,\n            \"layout_flexBasisPercent\": 0.2\n        }\n    },\n    {\n        \"name\": \"登出\",\n        \"type\": \"button\",\n        \"action\": \"Logout()\",\n        \"style\": {\n            \"layout_flexGrow\": 1,\n            \"layout_flexBasisPercent\": 0.2\n        }\n    }\n]",
+    "loginUrl": "Url();\nfunction getUrl() {\n    try {\n        let urls = Array.from(org.jsoup.Jsoup.parse(java.get(\"https://www.su7.la/\", {}).body()).select('.cards a'), x => x.attr('href'));\n        let data = JSON.parse(source.getVariable());\n        data.Urls = urls;\n        source.setVariable(JSON.stringify(data, null, \"\\t\"));\n        java.toast(`获取到${urls.length}个站源\\n${urls.join('\\n')}`);\n    } catch (e) {\n    \t   java.log(e.message)\n        java.toast('获取失败，请检查网络');\n    }\n}\n\nfunction setUrl(n) {\n    let data = JSON.parse(source.getVariable());\n    if (n + 1 > data.Urls.length) return java.toast(`暂时没有站源${n + 1}`);\n    data.sourceurl = data.Urls[n];\n    source.setVariable(JSON.stringify(data, null, \"\\t\"));\n    java.toast(`当前站源已切换到：\\n${data.Urls[n]}`);\n}\n\nfunction login() {}\n\nfunction Login() {\n    let username = String(result?. [\"用户名\"] || '') || \"axb\";\n    let password = String(result?. [\"密码\"] || '') || \"123456789@\";\n    let url = `${Url()}/api/user/login`;\n    let response = JSON.parse(java.post(url, JSON.stringify({\n        username,\n        password\n    }), {\n        \"x-requested-with\": \"XMLHttpRequest\",\n        \"Content-Type\": \"application/json\"\n    }).body());\n    if (!/successful/.test(response.msg)) return java.toast(response.msg);\n    let token = response.data.token;\n    source.putLoginHeader(JSON.stringify({\n        \"Authorization\": \"Bearer \" + token,\n        \"Cookie\": \"authToken=\" + token\n    }));\n    java.toast(`\\n用户：${username}\\n登录成功！`);\n}\n\nfunction Logout() {\n    source.removeLoginHeader();\n    cookie.removeCookie(Url());\n    java.toast('登出成功！');\n}\n\nfunction register() {\n    let infoData = generateRandomInfo();\n    let username = infoData.username;\n    let email = infoData.email;\n    let password = infoData.password;\n    let url = `${Url()}/api/user/register`;\n    let body = JSON.stringify({\n        username,\n        password,\n        email,\n        \"nickname\": username\n    });\n    let response = JSON.parse(java.post(url, body, {\n        \"x-requested-with\": \"XMLHttpRequest\",\n        \"Content-Type\": \"application/json\"\n    }).body());\n    if (!/successful/.test(response.msg)) return java.toast(response.msg);\n    java.log(`\\n用户名：${username}\\n注册邮箱：${email}\\n密码：${password}`);\n    let token = response.data.token;\n    result[\"用户名\"] = username;\n    result[\"密码\"] = password;\n    source.putLoginInfo(JSON.stringify(result));\n    source.putLoginHeader(JSON.stringify({\n        \"Authorization\": \"Bearer \" + token,\n        \"Cookie\": \"authToken=\" + token\n    }));\n    java.toast(`\\n用户：${username}\\n注册并登录成功！\\n用户数据已打印至源日志`);\n}",
+    "respondTime": 180000,
+    "ruleBookInfo": {
+      "author": "$.author",
+      "coverUrl": "$.cover",
+      "init": "$.data",
+      "intro": "@js:\nvar $ = result;\n`&nbsp;&nbsp;当前站源：${JSON.parse(source.getVariable()).sourceurl}\\n上架时间：${java.timeFormat($.createTime * 1000)}\\n更新时间：${java.timeFormat($.editTime * 1000)}\\n简介：${$.intro}`;",
+      "kind": "@js:var $ = result;\n$.tags + ',' + java.timeFormat($.editTime * 1000);",
+      "name": "$.title",
+      "tocUrl": "{{Url()}}/comic/{{$.id}}"
+    },
+    "ruleContent": {
+      "content": "@js:var imglist = JSON.parse(src).data.images\nresult = imglist.map(x => `<img src=\"${x.url}\">`).join('\\n');",
+      "imageStyle": "FULL",
+      "nextContentUrl": "@js:var pageList = [];\nlet Data = JSON.parse(src).data.pagination;\nvar page = Math.ceil(Data.total / Data.page_size);\nfor (let i = 2;i <= page;i++) {\npageList.push(baseUrl.replace(\"page=1\",`page=${i}`));\n}\npageList;"
+    },
+    "ruleExplore": {
+      "author": "$.author",
+      "bookList": "$.data",
+      "bookUrl": "{{Url()}}/api/comic/{{$.url##[^\\d]}}",
+      "coverUrl": "$.pic",
+      "intro": "$.intro",
+      "kind": "$.tags",
+      "name": "$.title"
+    },
+    "ruleSearch": {
+      "author": "$.author",
+      "bookList": "$.data.list[*]",
+      "bookUrl": "{{Url()}}/api/comic/{{$.id}}",
+      "coverUrl": "$.cover",
+      "intro": "$.description",
+      "kind": "@js:var $ = result;\n$.tags + ',' + java.timeFormat($.editTime * 1000);",
+      "name": "$.title"
+    },
+    "ruleToc": {
+      "chapterList": "#chapter-grid-container a",
+      "chapterName": "[class$=\"name\"]@text",
+      "chapterUrl": "href##(\\d+)$##/api/comic/image/$1?page=1###",
+      "preUpdateJs": "var sourceUL = Url();\nif (!String(book.bookUrl).includes(sourceUL)) {\n  book.bookUrl = String(book.bookUrl).replace(/https?:\\/\\/[^\\/]+/,sourceUL);\n  book.tocUrl = String(book.tocUrl).replace(/https?:\\/\\/[^\\/]+/,sourceUL);\n  java.toast(\"\\n检测到切换源站，已更新目录链接。\");\n   java.refreshTocUrl();\n}",
+      "updateTime": "span@text##\\n##|"
+    },
+    "searchUrl": "{{Url()}}/api/search?keyword={{key}}&type=mh&page={{page}}&pageSize=20",
+    "weight": 0
+  }
+]
