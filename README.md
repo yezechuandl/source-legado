@@ -31,11 +31,6 @@ Nice Cat漫画（App）
 >[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/漫画/猕猴桃漫画.json)
 >
 ## 轻小说
-~~汉化社区（韩轻机翻·需要登录）~~(似乎没人用，暂停更新)
->[Guthub直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/轻小说/汉化社区.json)
->
->[CDN加速](https://fastly.jsdelivr.net/gh/yezechuandl/source-legado@main/source/轻小说/汉化社区.json)
->
 幻梦轻小说
 >[Guthub直链](https://raw.githubusercontent.com/yezechuandl/source-legado/main/source/轻小说/幻梦轻小说.json)
 >
